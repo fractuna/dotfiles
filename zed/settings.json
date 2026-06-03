@@ -1,0 +1,132 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "collaboration_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "indent_guides": {
+      "show": "always"
+    },
+    "default_width": 300.0,
+    "dock": "left",
+    "button": true
+  },
+  "show_completions_on_input": false,
+  "inlay_hints": {
+    "enabled": false
+  },
+  "zoomed_padding": false,
+  "tabs": {
+    "close_position": "left",
+    "file_icons": true,
+    "git_status": false
+  },
+  "completion_menu_scrollbar": "auto",
+  "show_completion_documentation": true,
+  "indent_guides": {
+    "coloring": "fixed"
+  },
+  "hover_popover_enabled": false,
+  "helix_mode": false,
+  "preview_tabs": {
+    "enabled": true
+  },
+  "image_viewer": {
+    "unit": "binary"
+  },
+  "tasks": {
+    "enabled": true
+  },
+  "auto_indent_on_paste": true,
+  "auto_indent": true,
+  "hard_tabs": false,
+  "toolbar": {
+    "agent_review": false,
+    "code_actions": false,
+    "selections_menu": false,
+    "quick_actions": false,
+    "breadcrumbs": false
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "relative_line_numbers": "enabled",
+  "buffer_line_height": "standard",
+  "buffer_font_family": "Iosevka Nerd Font Propo",
+  "diagnostics": {
+    "button": true
+  },
+  "terminal": {
+    "dock": "right",
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "button": true
+  },
+  "status_bar": {
+    "cursor_position_button": true,
+    "active_language_button": true
+  },
+  "use_system_window_tabs": true,
+  "bottom_dock_layout": "full",
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show": true
+  },
+  "search": {
+    "whole_word": false,
+    "button": true
+  },
+  "debugger": {
+    "dock": "bottom",
+    "button": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_user_picture": false,
+    "show_onboarding_banner": false,
+    "show_project_items": false,
+    "show_sign_in": false,
+    "show_branch_icon": false,
+    "show_branch_name": false
+  },
+  "project_panel": {
+    "auto_reveal_entries": true,
+    "git_status": true,
+    "folder_icons": true,
+    "file_icons": true,
+    "entry_spacing": "comfortable",
+    "dock": "left",
+    "hide_hidden": false,
+    "button": true
+  },
+  "agent": {
+    "button": true,
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5"
+    },
+    "model_parameters": []
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light",
+    "dark": "One Dark"
+  }
+}

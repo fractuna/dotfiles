@@ -1,0 +1,94 @@
+/* @import "$HOME/.config/colors/colors.css" */
+@import "./colors.css";
+
+* {
+    font-family: "0xProto Nerd Font";
+    font-size:13px;
+    font-weight: bold;
+    min-height: 3px;
+}
+
+#waybar {
+    background: alpha(@background, 0.9);
+    border-radius: 0;
+}
+
+#custom-weather {
+    color: @color5;
+}
+
+#workspaces {
+    margin: 1px 0;
+}
+
+#workspaces button {
+    color: @foreground;
+    border: none;
+    padding: 0 5px;
+}
+#workspaces button:hover {
+    color: @color5;
+    border-radius: 1px;
+    transition: none;
+}
+
+#workspaces button.active {
+    color: @color5;
+}
+
+#workspaces button.focused {
+    background-color: @color9;
+    color: white;
+    border-radius: 1px;
+}
+
+#workspaces button.urgent {
+    color: green;
+    background-color: @color7;
+}
+
+#cyustom-power,
+#tray,
+#bluetooth,
+#network,
+#battery,
+#pulseaudio,
+#clock {
+    color: @foreground;
+    margin: 1px 0;
+    padding: 0 5px;
+}
+
+#custom-power:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#pulseaudio:hover,
+#clock:hover {
+    background-color: alpha(@color3, 0.5);
+}
+
+#bluetooth {
+    color: @color8;
+}
+
+#network {
+    color: @color1;
+}
+
+#battery {
+    color: @color2;
+}
+
+#pulseaudio {
+    color: @color3;
+}
+
+#clock {
+    margin-right: 10px;
+    color: @color4;
+}
+
+#custom-power {
+    margin: 0px 5px 0 5px;
+}

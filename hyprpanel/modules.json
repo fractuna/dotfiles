@@ -1,0 +1,5 @@
+{
+  "custom/ashkan": {
+    "execute": "notify-send 'hello'"
+  }
+}

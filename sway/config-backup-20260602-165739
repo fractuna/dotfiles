@@ -1,0 +1,447 @@
+# Eikoakiba sway config (forked from https://github.com/arkboix)
+# AUTHOR: EikoAkiba (inspired by Arkboi X)
+# CREDIT: https://github.com/eikoakiba (ins arkboix)
+
+include ~/.config/sway/colors.conf
+
+### Auto Session Startup
+#
+# workspace number 1
+# exec flatpak run app.zen_browser.zen
+# workspace number 2
+# exec kitty
+# workspace number 3
+# exec Obsidian
+
+### Variables
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod1
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+# set $term ghostty
+set $term kitty
+
+# Your preferred application launcher
+# set $menu rofi -show drun
+# set $menu wmenu-run
+set $menu rofi -show drun
+# set $menu dmenu_run
+
+# File Manager
+# set $file-manager thunar
+set $file-manager nautilus
+
+# Config the prefer browser
+set $web-browser brave-browser
+
+# lock screen
+# set $lock 'swaylock \
+#     --color 2d353b \
+#     --inside-color 3a454a \
+#     --inside-clear-color 5c6a72 \
+#     --inside-ver-color 5a524c \
+#     --inside-wrong-color 543a3a \
+#     --ring-color 7a8478 \
+#     --ring-clear-color a7c080 \
+#     --ring-ver-color dbbc7f \
+#     --ring-wrong-color e67e80 \
+#     --key-hl-color d699b6 \
+#     --bs-hl-color e69875 \
+#     --separator-color 2d353b \
+#     --text-color d3c6aa \
+#     --text-clear-color d3c6aa \
+#     --text-ver-color d3c6aa \
+#     --text-wrong-color d3c6aa \
+#     --indicator-radius 100 \
+#     --indicator-thickness 10 \
+#     --font "Iosevka Nerd Font Mono"'
+#
+### OBS Fixes and XDG Desktop
+
+# Set XDG_CURRENT_DESKTOP for proper Wayland support
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+
+# Start xdg-desktop-portal services (ensure wlr starts first)
+exec --no-startup-id /usr/lib/xdg-desktop-portal-wlr &
+exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+
+
+### Colorscheme
+
+# Everforest colors
+# set $bg0  #2d353b
+# set $bg1  #343f44
+# set $fg   #d3c6aa
+# set $green #a7c080
+# set $blue  #7fbbb3
+# set $yellow #dbbc7f
+# set $gray  #868d80
+
+# Pastel TTY Colors
+# set $bg0    #282828
+# set $bg1    #323232
+# set $fg     #e0e0e0
+# set $green  #b5e8a9
+# set $blue   #a5d8ff
+# set $yellow #ffe6a7
+# set $gray   #a0a0a0
+# set $red    #ff9a9e
+# set $magenta #dda0dd
+# set $cyan   #a3e8e8
+# set $white  #ffffff
+# set $orange #ffbb8a
+#
+# set $bg0    #282828
+# set $bg1    #3c3836
+# set $fg     #ebdbb2
+# set $green  #b8bb26
+# set $blue   #83a598
+# set $yellow #fabd2f
+# set $gray   #928374
+# set $red    #fb4934
+# set $magenta #d3869b
+# set $cyan   #8ec07c
+# set $white  #ebdbb2
+# set $orange #fe8019
+
+
+### Output configuration
+output eDP-1 resolution 1920x1080 position 0,0
+output * adaptive_sync on
+# output HDMI-A-1 adaptive_sync off
+
+### Idle configuration
+
+exec swayidle -w \
+    timeout 50000000 'swaylock \
+        -i ~/Ashkan/Wallpapers/1515420-1920x1080-desktop-1080p-bridge-to-terabithia-background.jpg \
+        --color 2d353b \
+        --inside-color 3a454a \
+        --inside-clear-color 5c6a72 \
+        --inside-ver-color 5a524c \
+        --inside-wrong-color 543a3a \
+        --ring-color 7a8478 \
+        --ring-clear-color a7c080 \
+        --ring-ver-color dbbc7f \
+        --ring-wrong-color e67e80 \
+        --key-hl-color d699b6 \
+        --bs-hl-color e69875 \
+        --separator-color 2d353b \
+        --text-color d3c6aa \
+        --text-clear-color d3c6aa \
+        --text-ver-color d3c6aa \
+        --text-wrong-color d3c6aa \
+        --indicator-radius 100 \
+        --indicator-thickness 10 \
+        --font "Iosevka"'
+    # timeout 1600000000 'swaymsg output "*" power off' \
+    # resume 'swaymsg output "*" power on' \
+
+# uuefore-sleep 'swaylock -f -c 000000'
+
+bindsym $mod+Shift+p move scratchpad
+bindsym $mod+Shift+o scratchpad show
+
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Font Configuration
+# My custome font -> Iosevka
+font pango:iosevka-expand 9
+
+### Autostart
+
+exec mpd ~/.config/mpd/mpd.conf
+
+## Sway Automatic Tiling
+exec autotiling -l 2
+
+## Flameshot
+exec flameshot
+
+## Emacs Daemon
+# exec /usr/bin/emacs --daemon
+
+set $opacity 0.9
+# for_window [class="alacritty"] opacity $opacity
+# for_window [app_id=".*"] opacity $opacity
+
+## Clipboard
+exec wl-paste --type text --watch cliphist store &
+exec wl-paste --type image --watch cliphist store &
+
+# NetworkManager
+exec nm-applet
+
+# Mr Robot Mode
+bindsym $mod+Shift+r exec ~/Programming/bash/MrRobotMode/robot.sh
+
+# set $wallpapers_path $HOME/Ashkan/Wallpapers
+# exec ~/.local/bin/wal -i ~/Ashkan/Wallpapers/ -o ~/.opt/src/walscr.sh
+exec ~/.local/bin/wal -w -o ~/.opt/src/walscr.sh
+
+## Waybar
+exec mode sway
+exec waybar
+
+# set $wallpaper_image `find $wallpapers_path -type f | shuf -n 1`
+# output "*" bg `find $wallpapers_path -type f | shuf -n 1` fit
+output "*" bg $wallpaper fill
+# exec ~/.cargo/bin/wallust run $wallpaper_image
+
+# go to the last window
+bindcode $mod+47 workspace back_and_forth
+
+# bindsym F6 output "*" bg `find $wallpapers_path -type f | shuf -n 1` fill
+bindsym F6 exec ~/.local/bin/wal -i ~/Ashkan/Wallpapers/ -o ~/.opt/src/walscr.sh
+
+bindsym $mod+g exec notify-send -a "tuned-adm" "$(tuned-adm profile | tail -n 1)"
+
+# MPD bindings for songs
+bindsym $mod+m exec rmpc volume -30; exec notify-send -a "rmpc" "rmpc: volume got `rmpc volume`"
+bindsym $mod+shift+m exec rmpc volume +30; exec notify-send -a "rmpc" "rmpc: volume got `rmpc volume`"
+
+### Window Rules
+for_window [class="Thunar"] floating enable, move position center, resize set 600 400
+for_window [title="Application.*"] floating enable, move position center
+# Hide the top title bar (borde)
+default_border none
+default_floating_border none
+for_window [class="^.*"] border pixel 1
+# Make some programs floating by defauolt
+# for_window [app_id="thunar"] floating enable
+# Change the windows browser size
+# for_window [Title="chrome"] resize set 600 600
+
+### Some fixex confs
+
+# Restore GNOME's settings
+exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+
+# Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
+exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+
+### Key bindings
+
+    # Start a terminal
+    bindsym $mod+Return exec $term
+    
+    # Start a terminal by cwd
+    bindsym $mod+Shift+Return exec kitty_pwd
+
+    # Start Emacs
+    # bindsym $mod+e exec emacsclient -c
+
+    # start nvim
+    bindsym $mod+i exec kitty -e nvim
+
+    # Sticky Mode
+    # bindsym $mod+a exec sticky enable
+
+    # Clipboard
+    bindsym $mod+v exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
+
+    # Emoji Picker
+    # bindsym $mod+Shift+s exec rofi -show emoji -modi emoji -matching regex -sorting-method levenshtein
+
+    # Lock
+    bindsym $mod+shift+t exec $lock
+
+    # Screen Record - TODO
+    # bindsym $mod+g exec ~/.config/sway/scripts/prompt-record.sh
+
+    # File Manager
+    # bindsym $mod+y exec $file-manager
+    bindsym $mod+y exec rofi -show filebrowser
+
+# Reload Waybar
+    bindsym $mod+shift+a exec pkill -SIGUSR2 waybar
+
+# Hide the waybar at all
+    bindsym $mod+shift+b exec killall waybar
+
+    # Call the browser variable and launch it with $mod+b
+    bindsym $mod+b exec $web-browser
+
+    # Kill focused window
+    # bindsym $mod+w kill
+    bindsym $mod+q kill
+    bindsym button3 kill
+
+    # Logout
+    # bindsym ctrl+alt+delete exec nwg-bar
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    # Resize windows with left mouse button while holding $mod
+    floating_modifier $mod normal
+    bindsym $mod+button1 resize
+
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# workspaces:
+#
+    # switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # move focused container to workspace
+    bindsym $mod+shift+1 move container to workspace number 1
+    bindsym $mod+shift+2 move container to workspace number 2
+    bindsym $mod+shift+3 move container to workspace number 3
+    bindsym $mod+shift+4 move container to workspace number 4
+    bindsym $mod+shift+5 move container to workspace number 5
+    bindsym $mod+shift+6 move container to workspace number 6
+    bindsym $mod+shift+7 move container to workspace number 7
+    bindsym $mod+shift+8 move container to workspace number 8
+    bindsym $mod+shift+9 move container to workspace number 9
+    bindsym $mod+shift+0 move container to workspace number 10
+#
+### Layout stuff:
+#
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+
+    # Manual Tiling Modes
+       bindsym $mod+p splith
+    bindsym $mod+o splitv
+
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+#
+# Resizing containers:
+#
+
+# for_window [all] saturation 0
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Default keyboard layout / way
+input type:keyboard {
+    xkb_layout us,ir
+    xkb_options grp:ctrl_space_toggle
+}
+
+input type:touchpad {
+  tap enabled
+}
+
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec flameshot gui
+
+#
+# Status Bar:
+#
+bar {
+# Using waybar currently
+}
+
+include @sysconfdir@/sway/config.d/*
+
+## Sway Borders
+
+# Focused window (active)
+client.focused $color1 $background $foreground $color0 $foreground
+
+# # Unfocused window (inactive)
+# client.unfocused $background $background $color3 $background $background
+#
+# # Urgent window (e.g., alerts)
+# client.urgent $yellow $bg1 $fg $yellow $yellow
+
+# Borders and Gaps.
+
+# bindsym $mod+shift+g gaps inner 1
+
+gaps inner 0
+gaps outer 1
+#
+# default_border pixel 1
+
+# titlebar_padding 8 2
+# titlebar_border_thickness 2
