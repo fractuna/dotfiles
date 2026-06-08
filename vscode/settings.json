@@ -32,8 +32,12 @@
             "commands": ["workbench.action.quickOpen"]
         },
         {
+            "before": ["<leader>", "f", "w"],
+            "commands": ["workbench.action.findInFiles"],
+        },
+        {
             "before": ["K"],
-            "command": ["editor.action.showHover"]
+            "commands": ["editor.action.showDefinitionPreviewHover"]
         },
         {
             "before": ["<leader>", "w", "h"],
@@ -66,9 +70,9 @@
         "<C-f>": false
     },
 
-    "workbench.colorTheme": "Kanso Ink",
+    "workbench.colorTheme": "Everforest Pro Dark Vibrant",
     "redhat.telemetry.enabled": false,
-    "workbench.activityBar.location": "hidden",
+    "workbench.activityBar.location": "top",
     "java.imports.gradle.wrapper.checksums": [
         {
             "sha256": "2c23278a62dc9f96ab11bee897d9f53e6479d6419135e4560ce822a6431df5e5",
@@ -81,7 +85,16 @@
     "editor.scrollbar.vertical": "hidden",
     "editor.scrollbar.horizontal": "hidden",
     "editor.cursorBlinking": "smooth",
-    "editor.fontFamily": "0xProto Nerd Font Mono",
+    "editor.fontFamily": "0xProto Nerd Font Propo",
     "editor.stickyScroll.enabled": false,
     "editor.minimap.enabled": false,
+    "terminal.integrated.fontFamily": "Iosevka",
+    "svelte.enable-ts-plugin": true,
+    "workbench.browser.showInTitleBar": false,
+    "window.menuBarVisibility": "compact",
+    "fennel-lsx.server-version": "bundled",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.editor.doubleClickTabToToggleEditorGroupSizes": "off",
+    "window.density.editorTabHeight": "compact",
+    "editor.stickyTabStops": true,
 }
