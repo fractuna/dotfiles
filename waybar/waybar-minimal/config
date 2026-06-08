@@ -85,7 +85,7 @@
     },
 
     "clock": {
-        "format": "{:%a %d/%m/%Y ~ %H:%M}",
+        "format": "{:%a %d/%m/%Y ~ %H:%M:%S}",
         "tooltip-format": "<span size='15000'><tt>{calendar}</tt></span>",
         "calendar": {
             "mode": "month",
@@ -97,5 +97,6 @@
             }
         },
         "on-click": "swaync-client -t -sw",
+        "interval": 1,
     }
 }
